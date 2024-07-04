@@ -5,19 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./images/2795761_bullet_checklist_cv_list_resume_icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>To-do List</title>
 </head>
 <body>
     
     <div id="container">
-        <input type="text" placeholder="Add Your Task" id="writeTask">
-        <button id="createTaskButton" type="submit"><span>Add Your Task</span></button>
-        <div id="doTasks">
+        <!-- <button type="button">
+            <i class="fa-solid fa-trash">Delete</i>
+        </button>
+        <button type="button">
+            <i class="fa-solid fa-check">Done</i>
+        </button> -->
+        <input type="text" placeholder="Add Your Task" id="inputTask">
+        <button id="btn1" type="submit"><span>Add Your Task</span></button>
 
+        <div id="tasks">
+            <ul class="to-do-list" id="list">
+                
+            </ul>
+        </div>
+
+        <!-- <p class="output" id="output1"></p>
+        <div id="doTasks">
+            
         </div>
         <div id="completedTaks">
 
-        </div>
+        </div> -->
     </div>
 
     <script src="./js/app.js"></script>
