@@ -23,6 +23,10 @@ function createTask() { // We create a function to add tasks entered in the inpu
         const doneButton = doneTaskButton();
         newElement.appendChild(doneButton);
 
+        // Create a divider for each task
+        const roundedDivider = divider();
+        newElement.appendChild(roundedDivider);
+
         // Append the new element (with buttons) to the list
         list.appendChild(newElement);
 
@@ -35,10 +39,10 @@ function createTask() { // We create a function to add tasks entered in the inpu
 
 function deleteTaskButton() { // when you click this the task is deleted and not display anymore in the page
     const button = document.createElement("button");
-    button.textContent = "DELETE";
+    // button.textContent = "DELETE";
   
     const trashIcon = document.createElement("i");
-    trashIcon.classList.add("fas", "fa-trash");  // Assuming Font Awesome
+    trashIcon.classList.add("fas", "fa-trash", 'delete-button', 'buttons');  // Assuming Font Awesome
     button.appendChild(trashIcon);
 
     return button;
@@ -46,14 +50,21 @@ function deleteTaskButton() { // when you click this the task is deleted and not
 
 function doneTaskButton() { // this function is when the user finish his task and click the button the task crossed out (this can change in a future)
     const button = document.createElement("button");
-    button.textContent = "DONE";
+    // button.textContent = "DONE";
   
     const checkIcon = document.createElement("i");
-    checkIcon.classList.add("fas", "fa-check");  // Assuming Font Awesome
+    checkIcon.classList.add("fas", "fa-check", "done-button", 'buttons');  // Assuming Font Awesome
     button.appendChild(checkIcon);
 
     return button;
 };
+
+function divider() { // I use this divider for a cleaner reading
+    const hr = document.createElement('hr')
+    hr.classList.add('rounded')
+
+    return hr;
+}
 
 
 
