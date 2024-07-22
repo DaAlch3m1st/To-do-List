@@ -4,69 +4,39 @@ function createTask() { // We create a function to add tasks entered in the inpu
     const input = document.getElementById('inputTask'); 
     const inputValue = input.value.trim();
     // We create two variables: one to get the id of the input and the other to get the value and remove the white spaces with "trim()"
-    if (inputValue) {
-        const list = document.getElementById('list');
-        const newElement = document.createElement('li');
-        newElement.textContent = inputValue;
-        // Here we create two variables: "list" will store the tasks added by the user, and "newElement" will create an "li" element that will be added according to the user's input
+    const list = document.getElementById('list');
+    const node = document.createElement('li');
 
-        // We create a const variable to delete the task that we want to delete
-        const deleteButton = deleteTaskButton();
-        deleteButton.addEventListener('click', function() {
-            list.removeChild(newElement); // Remove the task's 'li' element
-        });
-
-        // Append the delete button to the new element
-        newElement.appendChild(deleteButton);
-        
-        // Create a done button for the task
-        const doneButton = doneTaskButton();
-        newElement.appendChild(doneButton);
-
-        // Create a divider for each task
-        const roundedDivider = divider();
-        newElement.appendChild(roundedDivider);
-
-        // Append the new element (with buttons) to the list
-        list.appendChild(newElement);
-
-        input.value = '';
-        // Here we use the "newElement" variable and the "textContent" property to add the user's input content
-        // Then we append this text to the "list" variable, which is the parent of the "newElement" variable
-        // Finally, in our function, every time the user adds a task, the input will be reset to a blank space
+    if (inputValue === '') { // if the input value is a empty string display an alert that show to the user that cannot put a empty value in the to-do list
+        alert('invalid input');
+        console.error('Invalid input');
     };
-};
 
-function deleteTaskButton() { // when you click this the task is deleted and not display anymore in the page
-    const button = document.createElement("button");
-    // button.textContent = "DELETE";
-  
-    const trashIcon = document.createElement("i");
-    trashIcon.classList.add("fas", "fa-trash", 'delete-button', 'buttons');  // Assuming Font Awesome
-    button.appendChild(trashIcon);
+    node.append(inputValue); // we append the text of the input into my new element "li"
+    list.appendChild(node); // we append the child of the node to my "list"
 
-    return button;
-};
+    const deleteBtn = node.appendChild(createDeleteButton()); // appending the delete button function
+    deleteBtn.addEventListener('click', function() { // event to delete the node when the user click the button
+        node.remove(); 
+    })    
 
-function doneTaskButton() { // this function is when the user finish his task and click the button the task crossed out (this can change in a future)
-    const button = document.createElement("button");
-    // button.textContent = "DONE";
-  
-    const checkIcon = document.createElement("i");
-    checkIcon.classList.add("fas", "fa-check", "done-button", 'buttons');  // Assuming Font Awesome
-    button.appendChild(checkIcon);
+    const doneBtn = node.appendChild(taskDoneButton())
+    doneBtn.addEventListener('click', function() {
+        node.style.backgroundColor = 'red' // Next: when the user click the button done, move the element "li/node" to a new div
+    })
 
-    return button;
-};
-
-function divider() { // I use this divider for a cleaner reading
-    const hr = document.createElement('hr')
-    hr.classList.add('rounded')
-
-    return hr;
 }
 
+function createDeleteButton() { // Function to create the button that delete the node/li
+    const deletebtn = document.createElement('button');
+    deletebtn.textContent = 'delete';
+    return deletebtn;
+};
 
+function taskDoneButton() {  // function to create the button when the user finish the task 
+    const doneBtn = document.createElement('button');
+    doneBtn.textContent = 'Done';
+    return doneBtn;
+}
 
-btn1.addEventListener('click', createTask);
- // Now, every time the user adds a task, they need to click the button for it to be reflected on the page (as long as the input is not empty)
+btn1.addEventListener('click', createTask); // event to call the function createTask to create a new task with all his elements when the user click the button

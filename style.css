@@ -28,3 +28,7 @@ hr.rounded {
     border-top: 4px solid #bbb;
     border-radius: 5px;
   }
+
+button {
+    width: 4em;
+}
