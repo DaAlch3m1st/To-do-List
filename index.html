@@ -11,8 +11,25 @@
 <body>
     
     <div class="container" id="container">
-        <input type="text" placeholder="Add Your Task" id="inputTask">
-        <button id="btn1" type="submit"><span>Add Your Task</span></button>
+        <!-- <input type="text" placeholder="Add Your Task" id=""> -->
+        <button id="openModalBtn" type="submit"><span>Add Your Task</span></button>
+
+        <section class="form-tasks popup modal" id="modal">
+            <div class="modal_container">
+                <h1>Add your task</h1>
+                <form action="" class="form overlay" id="form-modal">
+                    <label for="inputTask">Add your task</label>
+                    <input type="text" id="inputTask">
+                    <p class="para-display" id="para"></p>
+
+                    <!-- <label for="date"></label>
+                    <select type="text"></select> -->
+
+                    <button id="addTaskBtn" type="button">Add your task</button>
+                    <button id="closeModalBtn" class="modal_btn" type="button">Close the modal</button>
+                </form>
+            </div>
+        </section>
 
         <div class="containerTask" id="tasks">
             <ul class="to-do-list" id="list">
